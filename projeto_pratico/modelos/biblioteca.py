@@ -1,9 +1,12 @@
+from modelos.avaliacao import Avaliacao
+
 class Biblioteca:
     bibliotecas = []
 
     def __init__(self, nome):
         self.nome = nome
         self._ativo = False
+        self.avaliacoes = []  # Lista para armazenar avaliações da biblioteca
         Biblioteca.bibliotecas.append(self)
 
     def __str__(self):
@@ -25,9 +28,8 @@ class Biblioteca:
     def ativo(self):
         return "Ativada" if self._ativo else "Desativada"
 
-biblioteca1 = Biblioteca("Biblioteca Central")
-biblioteca1.alterar_status()  # Ativa a biblioteca
-biblioteca2 = Biblioteca("Biblioteca Comunitária")
-biblioteca2.alterar_status()  # Ativa a biblioteca
+    def receber_avaliacao(self, cliente, nota):
+        """Recebe uma avaliação de um cliente e adiciona à lista de avaliações."""
+        avaliacao = Avaliacao(cliente, nota)
+        self.avaliacoes.append(avaliacao)
 
-Biblioteca.listar_bibliotecas()
