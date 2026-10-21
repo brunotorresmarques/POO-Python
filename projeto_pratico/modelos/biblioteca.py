@@ -9,9 +9,12 @@ class Biblioteca:
     def __str__(self):
         return f"Biblioteca: {self.nome}"
 
-    def listar_bibliotecas():
+    @classmethod # Método de classe para listar todas as bibliotecas
+    def listar_bibliotecas(cls):
+        print(f"{'Nome da Biblioteca'.ljust(30)} | {'Status'}")
+        print("-" * 45)
         for biblioteca in Biblioteca.bibliotecas:
-            print(f"Biblioteca: {biblioteca.nome}, Status: {biblioteca.ativo}")
+            print(f"{biblioteca.nome.ljust(30)} | {biblioteca.ativo}")
 
     # Setter para o atributo _ativo
     def alterar_status(self):
